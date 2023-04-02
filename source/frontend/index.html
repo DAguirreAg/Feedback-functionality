@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!--CSS Style-->
+    <link rel="stylesheet" href="static/styles.css">
+
+</head>
+<body>
+    <div class="content">
+        <div id="feedback-panel">
+            <h1>Got any feedback?</h1>
+            <h3>Send us your feedback so we can improve the service we offer you!</h3>
+
+            <form method="post" id="feedbackForm">
+                <label for="email">Email (Optional)*</label>
+                <input type="email" id="email" name="email " placeholder="example@example.com">
+                <br>
+                <br>
+                <label for="feedback">Feedback</label>
+                <input type="text" id="feedback" name="feedback" placeholder="Your feedback">
+                <input type="button" class="btn btn-warning" value="Submit" onclick="submitForm()">
+            </form>
+            
+            <h4>* We will only use the email to contact you for clarification questions and to provide recognition.</h4>
+        </div>
+    </div>
+    
+</body>
+</html>

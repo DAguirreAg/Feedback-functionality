@@ -1,0 +1,18 @@
+
+body {
+    background-color: #010409;
+    color: white;
+}
+
+.content {
+    width: 80%;
+    margin: auto;
+}
+
+#feedback-panel {
+    background-color: #161b22;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
