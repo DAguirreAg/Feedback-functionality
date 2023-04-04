@@ -16,7 +16,10 @@ def add_feedback(feedback: Feedback, db: Session = Depends(get_db)):
     
     # Get values
     email = feedback.email
-    feedbackText = feedback.feedback
+    feedbackText = feedback.feedbackText
+
+    print(email)
+    print(feedbackText)
 
     # Add feedback to the DB
     feedback = models.Feedback(email=email, feedback=feedbackText)

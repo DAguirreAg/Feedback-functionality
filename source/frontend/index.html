@@ -21,17 +21,81 @@
 
             <form method="post" id="feedbackForm">
                 <label for="email">Email (Optional)*</label>
-                <input type="email" id="email" name="email " placeholder="example@example.com">
+                <input type="email" id="email" name="email" placeholder="example@example.com">
                 <br>
                 <br>
                 <label for="feedback">Feedback</label>
-                <input type="text" id="feedback" name="feedback" placeholder="Your feedback">
+                <input type="text" id="feedbackText" name="feedbackText" placeholder="Your feedback">
                 <input type="button" class="btn btn-warning" value="Submit" onclick="submitForm()">
             </form>
             
             <h4>* We will only use the email to contact you for clarification questions and to provide recognition.</h4>
         </div>
     </div>
-    
+
+
+    <script>
+
+        // Post form data
+        function submitForm() {
+
+            var formElement = document.getElementById('feedbackForm');
+            var data = new FormData(formElement);
+            
+            // Check if it is a valid email address
+            function check_valid_email() {
+                email = data.get('email');
+                console.log(email);
+
+                if (email == '') {
+                    data.delete('email');
+                    return true;
+                };
+
+                const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return res.test(String(email).toLowerCase());
+            };
+
+            // Send feedback data
+            function send_feedback() {
+                $.ajax({
+                    url: "http://127.0.0.1:8000/feedback",
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(
+                        Object.fromEntries(data)
+                    ),
+                    dataType: "json",
+                    success: function (data) {
+                        // Display alert
+                        alert('Feedback successfully added!');
+                    },
+                    error: function (data) {
+                        //var response = JSON.parse(data['responseText']);
+                        //var error_message = response['detail'];
+                        //alert(error_message);
+                        alert('An error has ocurred.');
+                    }
+                });
+            };
+
+            // Check Form data is correct
+            var formDataCorrect = true;
+            if (!check_valid_email()) {
+                alert('Email format not correct. Please revise it.')
+                formDataCorrect &= false;
+            };
+
+            // Send form data if correct
+            if (formDataCorrect) {
+                send_feedback();
+            };
+
+        }
+
+    </script>
+
+
 </body>
 </html>

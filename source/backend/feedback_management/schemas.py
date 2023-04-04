@@ -3,4 +3,4 @@ from typing import Union
 
 class Feedback(BaseModel):
     email: EmailStr | None = None
-    feedback: str
+    feedbackText: str
