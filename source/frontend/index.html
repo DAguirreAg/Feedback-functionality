@@ -20,13 +20,17 @@
             <h3>Send us your feedback so we can improve the service we offer you!</h3>
 
             <form method="post" id="feedbackForm">
+                <label for="feedback">Feedback</label>
+                <br>
+                <textarea rows="4" cols="50" id="feedbackText" name="feedbackText"></textarea>
+                <br>
+                <br>
                 <label for="email">Email (Optional)*</label>
                 <input type="email" id="email" name="email" placeholder="example@example.com">
                 <br>
                 <br>
-                <label for="feedback">Feedback</label>
-                <input type="text" id="feedbackText" name="feedbackText" placeholder="Your feedback">
                 <input type="button" class="btn btn-warning" value="Submit" onclick="submitForm()">
+            
             </form>
             
             <h4>* We will only use the email to contact you for clarification questions and to provide recognition.</h4>
