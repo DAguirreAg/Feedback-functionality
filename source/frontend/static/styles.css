@@ -7,12 +7,30 @@ body {
 .content {
     width: 80%;
     margin: auto;
+    max-width: 500px;
 }
 
 #feedback-panel {
     background-color: #161b22;
-    padding: 20px;
+    padding: 30px;
     margin: 20px;
-    text-align: center;
-    border-radius: 5px;
+    border-radius: 15px;
 }
+
+#feedbackForm textarea {
+    resize: vertical;
+    width: 100%;
+}
+
+#email {
+    width: 100%;
+}
+
+#feedbackSubmitButton {
+    background-color: darkgoldenrod;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px 0px 0px 0px;
+    border-radius: 10px;
+}
+
