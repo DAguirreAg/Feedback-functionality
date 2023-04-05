@@ -7,5 +7,5 @@ CREATE TABLE feedback (
 	id SERIAL PRIMARY KEY,
 	email VARCHAR,
 	created_at timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    feedback VARCHAR NOT NULL
+    feedback VARCHAR (300) NOT NULL
 );
