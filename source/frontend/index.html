@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!--CSS Style-->
-    <link rel="stylesheet" href="static/style2.css">
+    <link rel="stylesheet" href="static/styles.css">
 
 </head>
 <body>
@@ -50,7 +50,6 @@
             // Check if it is a valid email address
             function check_valid_email() {
                 email = data.get('email');
-                console.log(email);
 
                 if (email == '') {
                     data.delete('email');
@@ -58,7 +57,26 @@
                 };
 
                 const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return res.test(String(email).toLowerCase());
+                
+                if (res.test(String(email).toLowerCase())) {
+                    return true;
+                } else {
+                    alert('Email format not correct. Please revise it.');
+                    return false;
+                };
+                
+            };
+
+            // Check FeedbackText lenght is valid
+            function check_valid_feedbackText() {
+                feedbackText = data.get('feedbackText');
+
+                if (feedbackText.length >= 25 & feedbackText.length <= 300) {
+                    return true;
+                };
+
+                alert('Feedback is too short or long. Please make sure your feedback is between 25-300 characters.')
+                return false;
             };
 
             // Send feedback data
@@ -85,15 +103,8 @@
                 });
             };
 
-            // Check Form data is correct
-            var formDataCorrect = true;
-            if (!check_valid_email()) {
-                alert('Email format not correct. Please revise it.')
-                formDataCorrect &= false;
-            };
-
             // Send form data if correct
-            if (formDataCorrect) {
+            if (check_valid_email() & check_valid_feedbackText()){
                 send_feedback();
             };
 
