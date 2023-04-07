@@ -6,9 +6,8 @@ Many websites/businesses require feedback from customers to improve their produc
 
 <div>
 	<div align="middle">
-		<img src="documentation/Frontend view.png" alt="Frontend view" width=200>
-	
-	  	<img src="documentation/Database table content view.png" alt="Database table content view.png" width=200>
+		<img src="documentation/Frontend view.png" alt="Frontend view" height=300>
+	  	<img src="documentation/Database table content view.png" alt="Database table content view" height=300>
 	</div>
 	<div align="middle">
 	<i>Overview of frontend and database.</i>
