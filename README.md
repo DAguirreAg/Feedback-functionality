@@ -31,7 +31,7 @@ Follow the next steps:
 
 <div>
 	<div align="middle">
-		<img src="documentation/Running the backend service.png" alt="Running the backend service" height=300>
+		<img src="documentation/Running the backend service.png" alt="Running the backend service" width=800>
 	</div>
 	<div align="middle">
 	<i>Running the backend service.</i>
@@ -44,7 +44,7 @@ Follow the next steps:
 
 <div>
 	<div align="middle">
-		<img src="documentation/Running the frontend.png" alt="Running the frontend" height=300>
+		<img src="documentation/Running the frontend.png" alt="Running the frontend" width=400>
 	</div>
 	<div align="middle">
 	<i>Running the frontend.</i>
@@ -89,7 +89,7 @@ Note that a microservice architecture philosophy was followed, as this should al
 
 <div>
 	<div align="middle">
-		<img src="documentation/Main design.png" alt="Main design" height=300>
+		<img src="documentation/Main design.png" alt="Main design" width=900>
 	</div>
 	<div align="middle">
 	<i>Overview of frontend and database.</i>
