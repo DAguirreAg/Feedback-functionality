@@ -14,25 +14,50 @@ Many websites/businesses require feedback from customers to improve their produc
 	</div>
 </div>
 
-It was decided to include an optional email field, to allow users to identify themselves in case they have a 
+Note that it was decided to include an optional email field to allow users to identify themselves in case they would like to be acknowledged/contacted when the feedback is read.
 
-## 2. How it works
+## 2. How to use it
+Follow the next steps:
 
-The architecture of the code works in the following way:
-* A HTML form allows the user to input his feedback and submit it via JQuery to the server.
-* The server running the backend (implemented in FastAPI) will receive the form data and, if correct, it will add it to the database.
+* Prepare the database:
+	* Open your favourite SQL database and create the database and the table using `setup.sql` helper script.
+	* Open the `config.py` file and modify the `SQLALCHEMY_DATABASE_URL` to use the database you just created.
+	
 
-Note that a microservice architecture philosophy was followed, as this should allow it to receive feedback from users even when the other services are down (as long as they are not located in the same machines).
+* Prepare the backend service:
+	* Install the required python packages via `pip install -r requirements.txt`. (It is recommended to use virtual environments when installing them to avoid conflicting version issues).
+	* Open a terminal window and type `uvicorn main:app --reload` to launch the application.
+	* (Optional) Open a browser and type `http://127.0.0.1:8000/docs` in the address bar to open an interactive view of the backend service.
 
-<Add image of how the code architecture works>
+<div>
+	<div align="middle">
+		<img src="documentation/Running the backend service.png" alt="Running the backend service" height=300>
+	</div>
+	<div align="middle">
+	<i>Running the backend service.</i>
+	</div>
+</div>
 
-If planning to deploy this code yourself, consider following next setup, as it should allow for a simple yet easily upgradable system:
 
-<ADD image of how the overall architecture works>
+* Prepare the frontend:
+	* Run the `index.html` in a live server and open the provided URL. (I recommend using VScode's Live server plug-in due to its ease of use)
+
+<div>
+	<div align="middle">
+		<img src="documentation/Running the frontend.png" alt="Running the frontend" height=300>
+	</div>
+	<div align="middle">
+	<i>Running the frontend.</i>
+	</div>
+</div>
 
 ## 3. Technical details
 
 ### 3.1. Back-of-the-envelope calculations
+
+Find below a rough estimation of database requirements.
+
+Assumptions:
 
 * Average visitors to a medium size website: 100k/month
 * Percentage of people leaving feedbacks: 5%
@@ -40,14 +65,36 @@ If planning to deploy this code yourself, consider following next setup, as it s
 * Average email length: 50 characters 
 * Time to store the data: 5 years
 
-Database size: 
-* # of feedbacks: (100k * 12 * 5) * 0.05 = 300k feedbacks
-* Size in Database: (200 + 50) * 300k = 75M chars ~= 75Mb (timestamp size is not included).
+Database size:
+
+* Number of feedbacks: (100k * 12 * 5) * 0.05 = 300k feedbacks
+* Feedback and email size: (200 + 50) * 300k = 75M chars ~= 75Mb
+* Timestamp size: (13 bytes) * 300k ~= 3,9Mb
+* Required database size: 80Mb
 
 ### 3.2. Technology stack
 * Vanilla JS and JQuery were selected due to the simple nature of the application.
 * FastAPI was selected due to its performance and great community adoption.
 * SQL was selected due the robustness of it and the structured nature of the data to be received.
+
+
+### 3.3. How it works
+
+The architecture of the code works in the following way:
+
+* A HTML form allows the user to input his feedback and submit it via JQuery to the server.
+* The server running the backend (implemented in FastAPI) will receive the form data and, if correct, it will add it to the database.
+
+Note that a microservice architecture philosophy was followed, as this should allow the application to receive feedback from users even when the other services are down (as long as they are not located in the same machines).
+
+<div>
+	<div align="middle">
+		<img src="documentation/Main design.png" alt="Main design" height=300>
+	</div>
+	<div align="middle">
+	<i>Overview of frontend and database.</i>
+	</div>
+</div>
 
 ## 4. Considerations
 The implementation in this repository is intended for websites with low/medium traffic, as a high traffic website will have a higher likelihood of receiving an amount of feedback that will overwhelm the database. In case of needing a scalable solution, I suggest modifying the backend code accordingly to work with scalable and distributed databases.
